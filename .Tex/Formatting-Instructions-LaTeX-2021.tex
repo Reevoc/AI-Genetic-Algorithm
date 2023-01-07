@@ -104,7 +104,7 @@
 \title{Genetic Algorithm to understand evolution on the mutation of the proteins}
 \author {
     % Author
-    Piermarco Giustini 
+    Piermarco Giustini 2056755
 }
 
 \begin{document}
@@ -113,16 +113,16 @@
 
 \begin{abstract}
 
-\noindent Precise mRNA splicing is required for proper protein translation. Point mutations in sequences can result in incorrect recognition and the creation of an abnormal transcript of the altered gene. Typically, such mutations induce mistakes during the splicing process, which might affect the open reading frame. So the Genetic algorithm nearly perfectly describes this type of problem: we have a set population of proteins and we want to understand where the mutations come from. As a result, the major purpose is to rebuild the likely step that led to the mutation from a mutated and provided population using the logic of a Genetic Algorithm.
+\noindent Precise mRNA splicing is required for proper protein translation. Point mutations in sequences can result in incorrect recognition and in the creation of an abnormal transcript of the altered gene. Typically, these mutations induce mistakes during the splicing process, which might affect the open reading frame. Hence, the Genetic algorithm nearly perfectly describes this type of problem: we have a set population of proteins and we want to understand where the mutations come from. As a result, the major purpose is to rebuild the likely step that led to the mutation from a mutated and provided population using the logic of a Genetic Algorithm.
 
 \end{abstract}
 
 \section{Project Purpose}
-Some $DNA$ $mutations$ are quiet and have no impact, but others influence protein, which regulates whether the gene is active or not, produces more or less protein or changes protein synthesis entirely. A mutation is a change in a DNA sequence caused by either a mistake during DNA replication or chemical damage. Genes are regions of the genome that contain instructions for the synthesis of protein molecules, which perform the majority of the vital functions in cells. Understanding the cause of a mutation of a certain section of DNA can lead to understanding what happened during the history of protein mutation.
+Some $DNA$ $mutations$ are quiet and have no impact, but others influence protein, which regulate whether the gene is active or not, produces more or less protein or changes protein synthesis entirely. A mutation is a change in a DNA sequence that is caused by either a mistake during DNA replication or chemical damage. Genes are regions of the genome that contain the instructions for the synthesis of protein molecules, which perform the majority of the vital functions in cells. Understanding the cause of a mutation of a certain section of DNA can lead to understanding what happened during the history of protein mutation.
 By constructing a $big$ $pool$ $of$ $string$ $of$ $Genes$, this algorithm will be able to quickly identify what is likely the protein where the mutation came from.
 
 \section{How it is done}
-Genetic Algorithms are adaptive heuristic search algorithms that are a subset of $evolutionary algorithms$. These are clever exploitations of random search given with historical data to lead the search into the solution space area of greater performance. 
+Genetic Algorithms are adaptive heuristic search algorithms that are a subset of $evolutionary$ $algorithms$. These are clever exploitations of random search given by historical data to lead the search into the solution space area of greater performance. 
 In other words, they replicate "survival of the fittest" among individuals of successive generations in order to solve a problem. 
 Each generation is made up of a population of individuals, with each individual representing a point in the search space and a potential solution. Every person is represented by a string of character/integer/float/bits. This string is similar to the Chromosome. 
 \section{Creation of The Population}
@@ -130,9 +130,10 @@ For this part, it is really important to define a $optimal solution$ and a $popu
 \[population = {'AGTT', 'AGTT', ...}\]
 \[chromosome = {'AGTT'}\]
 \[optimal = {'ACCC'}\]
+
 \section{Fitness Function}
-Each new generation has more $superior genes$ on average than the individual (solution) of prior generations. As a result, each successive generation has better $partial answers$ than prior generations. This is translated in our instance because we are mutating in the right way to discover a perfect matching chromosome with the optimal solution. The underlying difficulty with this fitness score function is that there is no standard method to write it.
-Looking online, many people claim that writing a fitness function is really difficult, however there is one that works the majority of the time, by using the absolute value between each chromosome and the optimal solution.\\
+Firstly, it has been noticed that each new generation has more $superior$ $genes$ on average than the individual (solution) of prior generations. As a result, each successive generation has better $partial$ $answers$ than prior generations. This is translated in our instance because we are mutating in the right way to discover a perfect matching chromosome with the optimal solution. The underlying difficulty with this fitness score function is that there is no standard method to write it.
+Looking online, many researchers claim that writing a fitness function is a really difficult task. However, there is one that works the majority of the time, and it is the one that uses the absolute value between each chromosome and the optimal solution.\\
 \begin{table}[h]
     \centering
     \begin{tabular}{c|c}
@@ -146,42 +147,44 @@ Looking online, many people claim that writing a fitness function is really diff
     \label{tab:my_label}
 \end{table}
 \[ absolute = |A - G| = |65 - 71| = 6 \]
+
 \section{Evolution}
-Once the fitness function is defined, the next step is to conduct two critical operations that allow the algorithm to develop without assistance. The first operation that was developed was the $crossover$, which consisted of flipping a portion of two chromosomes by putting two cross sites. This process is carried out on the chromosome with the highest $fitness score$ using a random choice probability, such that the next population generated is closer to the solution.\\
+Once the fitness function is defined, the next step is to conduct two critical operations that allow the algorithm to develop without assistance. The first operation that was developed was the $crossover$, which consists in flipping a portion of two chromosomes by placing two cross sites. This process is carried out on the chromosomes with the highest $fitness$ $score$ using a $random$ $choice$ $probability$, such that the next population generated is closer to the solution.\\
 \[{'\textbf{AGTTCT}'}, {'ACCCTG'}\]
 \[crossover index = {1:3}\]
 \[{'\textbf{A}CCC\textbf{CT}'},{'A\textbf{GTT}TG'}\] \\
-The other operation is termed $mutation$, and it was one of the most critical parameters to fix during the experiment since a high mutation rate resulted in the failure to discover a solution. Using a low mutation rate, on the other hand, results in merely a permutation owing to the crossover operation and the method get stack.\\ 
-\['AGTCCTC ---> \textbf{C}GTCCT\textbf{A} \] \\
+The other operation is called $mutation$, and it was one of the most critical parameters to fix during the experiment since a high mutation rate resulted in the failure to discover a solution. The new population created, as a result, is just a random one of the previous population. Meanwhile, by using a low mutation rate, the algorithm results in a simple permutation because of/due to the crossover operation. As a consequence, the Algorithm stops and it is not able to reach any solution.\\ 
+\['AGTCCTC' ---> '\textbf{C}GTCCT\textbf{A}' \] \\
+
 \section{Algorithm}
 \begin{enumerate}
     \item Define the optimal protein
     \item Create the population
     \item Define fitness score function 
-    \item Until don't find optimal protein:
+    \item Until does not find optimal protein:
     \begin{enumerate}
-        \item Select 2 most chromosome based on their fitness score try to catch the best ones
+        \item Select 2 chromosomes based on their random choices probability 
         \item Perform crossover operation and mutation operation
-        \item place the 2 new chromosome in the population
-        \item calculate the fitness for the population 
+        \item place the 2 new chromosomes in the population
+        \item calculates the fitness for the population 
     \end{enumerate}
 \end{enumerate}
 
 
-\section{I tools used in the project}
+\section{Tools used in the project}
 What is used during the experiment:
 \begin{itemize}
-\item VScode
-\item \href{https://github.com/Reevoc/ARTIFICIAL-INTELLIGENCE/blob/main/Genetic%20Algorithm.ipynb}{GitHub}
+\item vscode
+\item \href{https://github.com/Reevoc/ARTIFICIAL-INTELLIGENCE}{GitHub}
 \item Python 
 \item Jupiter Notebook
 \end{itemize}
 
 \section{Experiments}
-It is possible to see how the experiment is carried out by looking at the table in the following pages. The experiments are carried out by choosing an optimal protein to locate and test with a different kind of parameter. Two different types of graphs are displayed. The first demonstrates the development of the learning trend and how we are approaching the answer age after era. The other, in contrast, demonstrates the variation between the most recent population of all proteins generated and the ideal one. The difference from the ideal one increases with the height of the histogram bar.
+It is possible to see how the experiment is carried out, by looking at the table on the following pages. An optimal protein is chosen to locate and test with a different kind of parameter. Two different types of graphics are displayed for each experiment. The first demonstrates the development of the learning trend and the approach to the answer epoch after epoch. The other graphic demonstrates the variation between the last population generated and the ideal protein that we gave at the beginning. In particular, the difference from the ideal one increases with the height of the histogram bar, the more is high the more is different and vice-versa.
 
 \section{Future work}
-A well-known protein could be used in the work's future iterations in order to see if the final population produced by the genetic algorithm has any well-known "mutated" proteins from the original.
+In future work, it will be interesting to test this kind of algorithm in real databases with well-known proteins and mutated ones. And see if the populations generated are correlated in some way to the evolution of the protein. Hence, it could be meaningful to understand the cause of mutation and likely it happens over time.
 
 \begin{figure}[h]
 \centering
@@ -228,7 +231,7 @@ A well-known protein could be used in the work's future iterations in order to s
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
         \hline
-            Experiment & length opt & Correct Epoch & Num population & Max dif genes & time \\
+            Experiment & Length Opt & Correct Epoch & Num Population & Max Dif Genes & time \\
             \hline
             exp1& 20 & 30 & 100 & 0.35 & 0.3s \\
             exp2& 20 & 15 & 1000 & 0.6 & 1.7s \\
@@ -236,7 +239,7 @@ A well-known protein could be used in the work's future iterations in order to s
             exp4& 100 & 121 & 10000 & 0.24 & 38m 13.2s\\
             \hline
     \end{tabular}
-    \caption{Four tests were carried out utilizing the genetic algorithm, where length opt is the overall length of the optimum Protein that we wish to find. Correct Epoch is the precise epoch at which the correct answer is discovered (also in the code the population is saved), The population number is the first population formed (e.g. 100 random strings created at the beginning), Max dif genes is the maximum difference between the genes that differ (e.g., $0.35$ signifies that the gene varies by $35\%$ from the right one), and time is the time required to assess the proper answer.}
+    \caption{Four tests were carried out utilizing the genetic algorithm, where $Length$ $Opt$ is the overall length of the optimum protein we wish to find. $Correct$ $Epoch$ is the precise epoch at which the correct answer is discovered (also in the code the population at this epoch is saved). $Num$ $Population$ is the number of the first population formed (e.g. 100 random strings created at the beginning). $Max$ $Dif$ $Genes$ is the maximum difference between the genes that differ (e.g., $0.35$ signifies that the gene varies by $35\%$ from the optimal one). $time$ is the time required to assess the proper answer.}
 \end{table*}
 
 \section{References}
