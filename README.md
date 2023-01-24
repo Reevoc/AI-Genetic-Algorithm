@@ -53,7 +53,6 @@ function is a really difficult task. However, there is one that works
 the majority of the time, and it is the one that uses the absolute value
 between each chromosome and the optimal solution.\
 
-::: {#tab:my_label}
   --- ----
    A   65
    G   71
@@ -144,21 +143,6 @@ populations generated are correlated in some way to the evolution of the
 protein. Hence, it could be meaningful to understand the cause of
 mutation and likely it happens over time.
 
-![experimet 1](fitpop100.png)
-
-![experimet 1](histpop100.png)
-
-![experimet 2](fitpop1000.png)
-
-![experimet 2](histpop1000.png)
-
-![experimet 3](fitpop 10000.png)
-
-![experimet 3](histpop 10000.png)
-
-![experimet 4](fitpop10000v2.png)
-
-![experimet 4](histpop10000v2.png)
 
    Experiment   Length Opt   Correct Epoch   Num Population   Max Dif Genes     time
   ------------ ------------ --------------- ---------------- --------------- -----------
